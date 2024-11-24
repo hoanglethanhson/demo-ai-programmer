@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+actor Admin_VTM as admin
+actor User_VTM as user
+package Event_Tracking {
+  usecase "Tra cứu lịch sử đăng ký, hủy đăng ký dịch vụ" as history_management_uc
+  usecase "Đăng ký Smart OTP" as register_smart_otp_uc
+  usecase "Hủy đăng ký Smart OTP" as unregister_smart_otp_uc
+  usecase "Tra cứu câu hỏi thường gặp" as faq_uc
+}
+admin --> history_management_uc
+user --> register_smart_otp_uc
+user --> unregister_smart_otp_uc
+user --> faq_uc
+@enduml
