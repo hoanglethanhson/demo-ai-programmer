@@ -39,4 +39,8 @@ public class MsisdnBlackListServiceImpl implements MsisdnBlackListService {
         }
         return optionalResult.isPresent();
     }
+
+    public void newFeature() {
+        //new feature impl here =))
+    }
 }
