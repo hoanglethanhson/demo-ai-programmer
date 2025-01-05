@@ -25,6 +25,7 @@ public class MsisdnBlackListServiceImpl implements MsisdnBlackListService {
     public String getActiveBlackListTableName() {
         Optional<TableBlackListMeta> blackListMetaOptional = tableBlackListMetaRepository.findFirstByStatusOrderByBlackListCodeAsc(1);
         //TODO: throw exception if not found
+        tableBlackListMetaRepository.deleteById(blackListMetaOptional.get().getId());
         return blackListMetaOptional.map(TableBlackListMeta::getTableName).orElse(null);
     }
 
@@ -33,6 +34,13 @@ public class MsisdnBlackListServiceImpl implements MsisdnBlackListService {
         String activeBlackListTableName = getActiveBlackListTableName();
         log.info("activeBlackListTableName: {}", activeBlackListTableName);
         Optional<MsisdnBlackList> optionalResult = msisdnBlackListRepository.findByMsisdn(msisdn, activeBlackListTableName);
+        if (optionalResult.isEmpty()) {
+            log.error("result not found");
+        }
         return optionalResult.isPresent();
+    }
+
+    public void newFeature() {
+        //new feature impl here =))
     }
 }

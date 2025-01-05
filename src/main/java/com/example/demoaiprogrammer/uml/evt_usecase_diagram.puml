@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+actor Admin_VTM as admin
+actor User_VTM as user
+package Event_Tracking {
+  usecase "Khai báo, quản lý event" as event_manage_uc
+  usecase "Tracking event" as tracking_uc
+}
+admin --> event_manage_uc
+user --> tracking_uc
+@enduml
